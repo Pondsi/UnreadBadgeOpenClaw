@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.3 — 2026-09-09
+
+- SKILL.md now references the screenshot via an absolute URL: the registry
+  resolves relative image paths against the page URL (not the artifact root),
+  which broke the image on the skill page. GitHub-rendered docs keep relative
+  paths.
+- Added a license note in SKILL.md clarifying that the bundled LICENSE is
+  MIT-style **with mandatory attribution**, even if registry metadata labels it
+  "MIT-0".
+- No script changes.
+
 ## 1.1.2 — 2026-09-09
 
 - Added `screenshots/` with real sidebar captures (Chinese + English UI) and

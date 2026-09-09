@@ -5,7 +5,11 @@ description: Mark OpenClaw sessions with a sidebar unread badge when a reply com
 
 # UnreadBadgeOpenClaw
 
-![Sidebar unread mark (English UI)](screenshots/sidebar-mark-en.png)
+![Sidebar unread mark (English UI)](https://raw.githubusercontent.com/Pondsi/UnreadBadgeOpenClaw/main/screenshots/sidebar-mark-en.png)
+
+> License note: this project uses an **MIT-style license with mandatory attribution**
+> (see `LICENSE`). Registry metadata may label it "MIT-0"; the attribution clause
+> in the bundled `LICENSE` file prevails.
 
 ## English
 
