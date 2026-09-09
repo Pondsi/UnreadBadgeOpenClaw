@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * unread-mark-keepalive.js v1.0 — renew session unread marks; 7-day hard fallback.
+ * unread-mark-keepalive.js v1.1 — renew session unread marks; 7-day hard fallback.
  *
  * Why: the gateway clamps agentStatus ttlMinutes to 1–120. Marks created by
  * unread-mark.js are recorded in $OPENCLAW_STATE_DIR/unread-marks.json; this
@@ -13,9 +13,15 @@
  * Per recorded mark:
  *   - older than 7 days            → force-clear, drop record
  *   - session gone from list       → drop record
- *   - lastReadAt > created         → operator read it; gateway already cleared → drop record
- *   - no agentStatus & not unread  → already cleared → drop record
+ *   - agentStatus already gone     → mark was cleared (read/TTL) → drop record, NEVER resurrect
+ *   - lastReadAt > created         → operator read it → drop record
  *   - otherwise                    → renew (statusNote + attention + ttl 120)
+ *
+ * v1.1 (2026-09-09): fixed "cleared mark comes back" — the gateway owns the
+ *   mark, so a missing agentStatus now always wins over the read-time heuristic.
+ *   Previously `lastReadAt > created` was checked first; when the operator read
+ *   the session at (or just before) the mark creation time the mark was judged
+ *   "unread" and a cleared badge was renewed ~90 min later.
  *
  * Everything goes through the gateway API (sessions.list / sessions.patch) —
  * no local database access, no agent-specific paths.
@@ -139,15 +145,18 @@ function main() {
       console.log(`[keepalive] drop ${key} (not in session list)`);
       continue;
     }
+    // ★ v1.1 fix: the gateway owns the mark — if agentStatus is gone it was
+    //   already cleared (read by the operator, or TTL-expired). Never
+    //   resurrect it. This check must come BEFORE the read-time heuristic.
+    if (!row.agentStatus) {
+      delete state[key];
+      console.log(`[keepalive] mark-cleared(read/ttl), drop ${key}`);
+      continue;
+    }
     const lastReadAt = Number(row.lastReadAt) || 0;
     if (lastReadAt > created) {
       delete state[key];
       console.log(`[keepalive] read-by-operator, drop ${key}`);
-      continue;
-    }
-    if (!row.agentStatus && row.unread === false) {
-      delete state[key];
-      console.log(`[keepalive] already-cleared, drop ${key}`);
       continue;
     }
 

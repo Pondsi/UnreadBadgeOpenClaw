@@ -76,6 +76,23 @@ Timestamps in gateway logs are UTC — convert before comparing with local
   on spaces and eats inner quotes, silently truncating notes like
   `[New reply] 14:21` down to `[New reply]`.
 
+## Resurrecting-badge bug (fixed in 1.1.1)
+
+The gateway owns the mark. A keep-alive that decides "unread" from read
+bookkeeping alone can re-create a mark the gateway already cleared:
+
+- Wrong order: `lastReadAt > created` first, then a weak
+  `!agentStatus && unread === false` check. When the operator opened the
+  session at (or milliseconds before) the mark was written, `lastReadAt` was
+  not greater than `created`, so the cleared mark was judged unread and renewed
+  on the next 90-minute cycle — the badge "came back" after being read.
+- Correct rule: **missing `agentStatus` always wins** → drop the record and
+  never patch. Only a mark still present on the gateway, and not yet read,
+  is renewed.
+
+Verify with `sessions.list` (`agentStatus` present?) instead of trusting a
+local timestamp comparison.
+
 ## Cadence math
 
 Gateway TTL cap: 120 min. Keep-alive every 90 min renews marks before they

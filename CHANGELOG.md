@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.1.1 — 2026-09-09
+
+Fixed a **resurrecting badge** bug in `scripts/unread-mark-keepalive.js`
+(reported by the maintainer): after a mark had been read and cleared by the
+gateway, the keep-alive could re-create it ~90 minutes later.
+
+- Root cause: the read-time heuristic (`lastReadAt > created`) was evaluated
+  first and the `agentStatus`-gone check additionally required `unread === false`.
+  When the operator read the session at (or just before) the mark creation
+  moment, the cleared mark was judged "unread" and renewed.
+- Fix: the gateway is the owner of the mark — a missing `agentStatus` now always
+  wins, so a cleared mark is never resurrected. Only marks still present on the
+  gateway and not yet read are renewed.
+- No other behavior changes; `unread-mark.js` is unchanged.
+
 ## 1.1.0 — 2026-09-09
 
 Renamed to **UnreadBadgeOpenClaw** (ClawHub slug `unreadbadgeopenclaw`; the old
