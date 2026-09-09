@@ -9,6 +9,16 @@ sidebar: a colored flag/alert **icon** plus a short timestamp **note**, set
 when a reply completes or fails, cleared natively when you actually read the
 session. Works even with "Show message preview" disabled.
 
+## What it looks like
+
+A finished reply puts a **flag** badge with the time on the session row; a
+failure puts an **alert** badge. The mark stays until you actually read the
+session — no sound needed to know where to look.
+
+| 简体中文界面 | English UI |
+|---|---|
+| ![Sidebar unread mark (中文)](screenshots/sidebar-mark-zh.png) | ![Sidebar unread mark (English)](screenshots/sidebar-mark-en.png) |
+
 ## Which package should I install?
 
 | | GitHub repo (this) | ClawHub artifact |

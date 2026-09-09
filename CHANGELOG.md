@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2 — 2026-09-09
+
+- Added `screenshots/` with real sidebar captures (Chinese + English UI) and
+  linked them from README / SKILL / 说明.md, so the badge style is visible at a
+  glance.
+- No script changes.
+
 ## 1.1.1 — 2026-09-09
 
 Fixed a **resurrecting badge** bug in `scripts/unread-mark-keepalive.js`

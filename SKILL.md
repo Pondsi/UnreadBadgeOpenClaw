@@ -5,6 +5,8 @@ description: Mark OpenClaw sessions with a sidebar unread badge when a reply com
 
 # UnreadBadgeOpenClaw
 
+![Sidebar unread mark (English UI)](screenshots/sidebar-mark-en.png)
+
 ## English
 
 Put a visible "something to look at" marker on an OpenClaw session row in the
