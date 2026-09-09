@@ -1,0 +1,73 @@
+name: Bug report
+description: Something is broken or behaves differently from the documentation
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please do not paste secrets, API keys or private transcripts.
+        Redact anything sensitive before submitting.
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched existing issues and discussions for the same problem
+          required: true
+        - label: I am using the latest release (check the tag/version in CHANGELOG.md)
+          required: true
+  - type: input
+    id: version
+    attributes:
+      label: UnreadBadgeOpenClaw version
+      description: The version in CHANGELOG.md, or the ClawHub version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: host
+    attributes:
+      label: Host
+      options:
+        - OpenClaw
+        - Other / custom agent
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system and Node.js version
+      placeholder: "Windows 11 26200, Node 24.20.0"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Include the exact command and the stdout lines (`[unread-mark] ...`) if there are any (redacted).
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run `node scripts/unread-mark.js --key <key> --event done`
+        2. See error / no badge ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Paste redacted stdout/stderr. Never paste credentials or raw transcripts.
+      render: shell
+    validations:
+      required: false
