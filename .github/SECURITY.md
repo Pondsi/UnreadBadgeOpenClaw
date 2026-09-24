@@ -30,8 +30,9 @@ In scope: the published package — `SKILL.md`, `README.md`, `说明.md`,
   (`unread-marks.json` in the OpenClaw state directory).
 - Both scripts **fail silently** (exit 0) by design; stdout lines
   (`[unread-mark] ...`, `[keepalive] ...`) are the debugging channel.
-- State records contain session keys and timestamps only — never message
-  content.
+- State records contain session keys, the note text passed via `--note` (default
+  `"[New reply] HH:mm"`), the attention icon name, and a timestamp — never
+  message content.
 
 ## Response
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * unread-mark-keepalive.js v1.1 — renew session unread marks; 7-day hard fallback.
+ * unread-mark-keepalive.js v1.1.4 — renew session unread marks; 7-day hard fallback.
  *
  * Why: the gateway clamps agentStatus ttlMinutes to 1–120. Marks created by
  * unread-mark.js are recorded in $OPENCLAW_STATE_DIR/unread-marks.json; this

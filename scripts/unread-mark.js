@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * unread-mark.js v1.0 — mark an OpenClaw session as "unread" in the Control UI sidebar.
+ * unread-mark.js v1.1.4 — mark an OpenClaw session as "unread" in the Control UI sidebar.
  *
  * Sets agentStatus = { statusNote, attention, ttlMinutes } via one
  * `openclaw gateway call sessions.patch` RPC:
