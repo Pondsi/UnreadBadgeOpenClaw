@@ -82,36 +82,7 @@ see `references/internals.md`.
 
 ---
 
-## 简体中文
 
-（概要——命令与参数与 English 节完全一致，不再重复）
-
-在 Control UI 侧边栏给会话行打"未读"标记：回复完成 → 🚩 flag 图标 +
-`[New reply] HH:mm`；回复失败 → ⚠️ alert 图标 + `[Failed] HH:mm`。打开会话、
-向它发新消息、TTL 到期时由网关原生清除——徽章代表"未读"，不是"过期装饰"。
-
-- `scripts/unread-mark.js`：单次 RPC（`sessions.patch`）打标一个会话。
-- `scripts/unread-mark-keepalive.js`：每 90 分钟续期，突破 120 分钟 TTL 上限，
-  7 天硬兜底；已读/已过期自动不再续。
-- **图标必须带**：关闭"显示消息预览"后纯文字 note 不渲染，图标走独立的常显通道。
-- 静默失败设计：任何异常 exit 0，绝不打扰它所报告的主流程。
-
-完整坑清单（6 条）与侧边栏渲染链分析见 English 节与 `references/internals.md`。
-
----
-
-## 繁體中文
-
-（摘要——指令與 English 節相同）
-
-在 Control UI 側邊欄替會話列加上「未讀」標記：回覆完成 → 🚩 flag 圖示 +
-`[New reply] HH:mm`；回覆失敗 → ⚠️ alert 圖示 + `[Failed] HH:mm`。開啟會話、
-傳送新訊息或 TTL 到期時由閘道原生清除——徽章代表「未讀」，不是「過期裝飾」。
-
-- 圖示必須設定：關閉「顯示訊息預覽」後純文字不會渲染，圖示走獨立的常顯通道。
-- 靜默失敗設計：任何異常都以 exit 0 結束，絕不干擾它所報告的主流程。
-
----
 
 ## 한국어
 
@@ -190,7 +161,3 @@ TTL — le badge signifie « non lu », pas « décoration périmée ».
   texte n'est pas rendue ; l'icône emprunte un canal toujours affiché.
 - Échec silencieux : toute erreur se termine par exit 0 et ne casse jamais le
   pipeline qu'elle rapporte.
-
----
-
-Pondsi (+MiMo-v2.5/v2.5pro+deepseek-v4-flash/pro+deepseek-v4.1-flash-expires-on-0910+GLM5.3-flash+Gemini3.1-pro+Qwen3.8-27b+Gemini3.8-flash) — automatically committed by OpenClaw

@@ -1,12 +1,12 @@
 # Internals: how sidebar marks actually render and clear
 
-> **Language index / 语言索引 / 語言索引 / 언어 색인 / Языковой указатель / 言語インデックス / Índice de idiomas / Index des langues**
+> **Language index / 언어 색인 / Языковой указатель / 言語インデックス / Índice de idiomas / Index des langues**
 >
 > This reference is maintained in English (below). One-line summaries in 8 languages:
 >
 > - **English** — Source-level notes on how the Control UI renders and clears session unread marks.
-> - **简体中文** — 从 Control UI 源码层面分析未读标记的渲染链与全部清除点。
-> - **繁體中文** — 從 Control UI 原始碼層面分析未讀標記的渲染鏈與全部清除點。
+> - **Simplified Chinese index** — see the English analysis below (rendering chain and clear points from Control UI source).
+> - **Traditional Chinese index** — see the English analysis below (rendering chain and clear points from Control UI source).
 > - **한국어** — Control UI 소스 수준에서 읽지 않음 표식의 렌더링 경로와 모든 제거 지점을 분석합니다.
 > - **Русский** — Анализ на уровне исходного кода Control UI: цепочка отрисовки и все точки снятия метки.
 > - **日本語** — Control UI のソースレベルで、未読マークの描画経路とすべての解除ポイントを分析します。

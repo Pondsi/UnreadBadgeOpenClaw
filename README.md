@@ -181,7 +181,3 @@ d'un nouveau message ou à l'expiration du TTL — le badge signifie « non lu �
 - Échec silencieux : toute erreur se termine par exit 0 et ne casse rien.
 
 Installation, utilisation et paramètres : voir la section **English** ci-dessus.
-
----
-
-Pondsi (+MiMo-v2.5/v2.5pro+deepseek-v4-flash/pro+deepseek-v4.1-flash-expires-on-0910+GLM5.3-flash+Gemini3.1-pro+Qwen3.8-27b+Gemini3.8-flash) — automatically committed by OpenClaw
